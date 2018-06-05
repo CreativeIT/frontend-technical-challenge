@@ -1,0 +1,11 @@
+<input type="text" (input)="getFilms($event.target.value)">
+<p *ngIf="isLoading">Loading...</p>
+<ul *ngIf="!isLoading">
+  <li *ngFor="let film of films">
+    <div [innerHTML]="film.image_code"></div>
+    <h2 [innerHTML]="film.link_code"></h2>
+    <p>Year: {{film.year}}</p>
+    <p>{{film.description}}</p>
+    <pre>{{JSON.stringify(film)}}</pre>
+  </li>
+</ul>
