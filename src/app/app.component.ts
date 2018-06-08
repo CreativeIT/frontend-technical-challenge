@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
+import { AutocompleteService } from './autocomplete.service';
 
 @Component({
   selector: 'app-root',
@@ -14,20 +15,20 @@ export class AppComponent {
   isLoading = false;
 
   constructor(
-    private http: HttpClient,
+    private autocomplete: AutocompleteService,
   ) { }
 
   getFilms(query) {
     if (this.request) {
       this.request.unsubscribe();
       this.films = [];
-      this.isLoading = false;
     }
-    if (query) {
-      this.isLoading = true;
-      this.request = this.http
-        .jsonp(`https://www.slated.com/films/autocomplete/profiles/?term=${query}`, 'callback')
-        .subscribe(res => (this.films = res as any[], this.isLoading = false));
-    }
+    this.isLoading = true;
+    this.request = this.autocomplete.getFilms(query)
+      .subscribe(
+        (res: any[]) => this.films = res,
+        () => this.isLoading = false,
+        () => this.isLoading = false,
+      );
   }
 }

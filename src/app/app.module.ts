@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { AutocompleteService } from './autocomplete.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     HttpClientJsonpModule,
   ],
-  providers: [],
+  providers: [
+    AutocompleteService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
