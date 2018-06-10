@@ -5,10 +5,12 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AutocompleteService } from './autocomplete.service';
+import { FilmComponent } from './film/film.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FilmComponent,
   ],
   imports: [
     BrowserModule,

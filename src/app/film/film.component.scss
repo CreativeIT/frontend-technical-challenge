@@ -1,0 +1,15 @@
+.media {
+  animation: fade-in ease-out 400ms;
+}
+
+@keyframes fade-in {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+
+  }
+}
