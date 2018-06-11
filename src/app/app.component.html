@@ -4,13 +4,17 @@
       <input type="text" class="form-control" (input)="getFilms($event.target.value)">
     </div>
   </div>
-  <div class="row d-flex justify-content-center">
-    <div *ngIf="isLoading" class="loader mt-3"></div>
+  <div class="row d-flex justify-content-center mt-3" *ngIf="isLoading">
+    <div class="loader"></div>
   </div>
-  <ul class="list-group list-group-flush list-unstyled mt-3" *ngIf="!isLoading">
+  <ul class="list-group list-group-flush list-unstyled mt-3" *ngIf="!isLoading && films.length > 0">
     <li class="list-group-item" *ngFor="let film of films">
       <app-film [data]="film"></app-film>
     </li>
   </ul>
-
+  <div class="row d-flex justify-content-center mt-3" *ngIf="!isLoading && films.length == 0">
+    <div class="alert alert-warning" role="alert">
+      Can not find movies by your query.
+    </div>
+  </div>
 </div>
